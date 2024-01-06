@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game </title>
+    <style>
+        body{
+            background-image: url('https://t4.ftcdn.net/jpg/05/56/35/57/360_F_556355796_LmdrQUWwv8it8auab6o2fBeUxDW4YtGY.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+       
+        .cen{
+            border:2px solid grey;
+            height: 500px;
+            width: 1300px;
+        }
+        #first {
+            position: absolute;
+            height: 120px;
+            width: 140px;
+            /* background-color: aqua; */
+            background-image: url('https://st3.depositphotos.com/2945617/12738/v/450/depositphotos_127386956-stock-illustration-cute-blue-bird-cartoon.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            cursor: pointer;
+            padding: 3px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <h1>Let's Start</h1>
+    <p id="timer">time: 01:00</p>
+    <p id="tot">total score: 0</p>
+    <div class="cen">
+    <div onclick="fun()" id="first"></div>
+    </div>
+    </div>
+    </center>
+    <script>
+        var count = 0;
+        function fun() {
+            count = count + 1;
+            var a = "total score: " + count;
+            document.getElementById("tot").innerHTML = a;
+            
+            document.getElementById("first").style.marginLeft=Math.random()*1100+"px";
+            document.getElementById("first").style.marginRight=Math.random()*400+"px";
+            document.getElementById("first").style.marginTop=Math.random()*300+"px";
+            document.getElementById("first").style.marginBottom=Math.random()*300+"px";
+            // Randomly move the box within the window dimensions
+            // var box = document.getElementById("first");
+            // var windowWidth = window.innerWidth - box.offsetWidth;
+            // var windowHeight = window.innerHeight - box.offsetHeight;
+            // var randomX = Math.floor(Math.random() * windowWidth);
+            // var randomY = Math.floor(Math.random() * windowHeight);
+
+            box.style.left = randomX + "px";
+            box.style.top = randomY + "px";
+        }
+
+        var seconds = 60;
+        function timer() {
+            seconds--;
+            var min = Math.floor(seconds / 60);
+            var rem = seconds % 60;
+            if (rem < 10) {
+                rem = "0" + rem;
+            }
+            document.getElementById("timer").innerHTML ="time: " +min + ":" + rem;
+            if (seconds == 0) {
+                clearTimeout(timerId);
+                window.alert("Game over");
+                location.reload();
+            }
+        }
+
+        var timerId = setInterval(timer, 1000);
+    </script>
+</body>
+</html>
